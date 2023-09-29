@@ -1,3 +1,4 @@
+import Data.Bits (FiniteBits(finiteBitSize))
 --comentario é com dois hífens seguidos
 
 hello = putStrLn "Hello World!"
@@ -42,4 +43,6 @@ fib2 n = fib' 0 1 2
             if i == n
                 then n2 + n1 
                 else fib' n1 (n2+n1) (i+1)
-    
+
+fibSeq :: [Integer]
+fibSeq = 0 : 1 : zipWith (+) fibSeq (tail fibSeq)
