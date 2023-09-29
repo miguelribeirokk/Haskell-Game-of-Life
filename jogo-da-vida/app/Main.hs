@@ -34,7 +34,7 @@ mostrarMatriz m = foldr (\a b -> a ++ "\n" ++ b) "" strings
 -}
  
 cellSize :: Int
-cellSize = 10
+cellSize = 1
  
 toPicture :: Matrix Bool -> Picture
 toPicture grid =
