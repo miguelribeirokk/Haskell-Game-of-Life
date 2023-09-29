@@ -1,6 +1,6 @@
 module Main where
 
-import           Data.Matrix (matrix, fromLists)
+import           Data.Matrix (Matrix, fromLists, prettyMatrix)
 import qualified Data.Matrix as M
 import           Data.Maybe (fromMaybe)
 
@@ -27,7 +27,11 @@ atualizarCelula m(i,j) v=v
                 vivos = lenght (filter (\x -> x) vizinhos')
  main :: IO() 
  main = do  
-    let m = fromLists [[1,2], [3,4]]
-    putStrLn (prettymatrix m)
+    let fp = "../teste.txt"
+    m <- lerInicial fp
+    putStrLn ""
+    where 
+        run m = do
+                putStrl (prettyMatrix m)
+                run (atualizar m)
 
-       
