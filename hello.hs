@@ -55,6 +55,7 @@ fibSeq :: [Integer]
 fibSeq = 0 : 1 : zipWith (+) fibSeq (tail fibSeq)
 
 -- Lista 
+
 -- Percorreer a lista
 -- f :: [a] -> [a] --Qualquer tipo
 -- f (h:t) = h : f t -- Head -> Tail
@@ -79,3 +80,23 @@ len (h:t) = 1 + len t
 sum' :: [Int] -> Int
 sum' [] = 0
 sum' (h:t) = h + sum' t
+
+{-
+Função de ordem superior 
+usada para dobrar (ou reduzir) uma lista da direita para a esquerda 
+(ou seja, começando do final da lista) 
+-}
+
+foldr' :: (a -> b -> b) -> b -> [a] -> b
+foldr' f z [] = z
+foldr' f z (h:t) = f h (foldr' f z t)
+
+{-
+foldr (+) 0 [1,2,3] = (+) 1 (foldr (+) 0 [2,3])
+-}
+
+{-
+foldr' (+) 0 [1,2,3] = (+) 1 (foldr' (+) 0 [2,3])
+                     = (+) 1 ((+) 2 (foldr' (+) 0 [3]))
+                     = (+) 1 ((+)) 2 ((+) 3 
+-}
