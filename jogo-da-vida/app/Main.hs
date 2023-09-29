@@ -52,7 +52,7 @@ toPicture grid =
 toPicture' :: (Int, Int) -> Bool -> Picture
 toPicture' (i, j) v =
     Translate x y $
-        Color (if v then black else white) $ -- Use green for living cells and red for dead cells
+        Color (if v then yellow else black) $ -- Use green for living cells and red for dead cells
             rectangleSolid (fromIntegral cellSize) (fromIntegral cellSize)
     where
         x = (fromIntegral j - 0.5) * fromIntegral cellSize

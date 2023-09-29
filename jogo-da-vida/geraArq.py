@@ -4,7 +4,7 @@ import random
 tamanho_matriz = 50
 
 # Gere a matriz com pontos e hashtags
-matriz = [['.' if random.random() < 0.5 else '#' for _ in range(tamanho_matriz)] for _ in range(tamanho_matriz)]
+matriz = [['.' if random.random() < 0.6 else '#' for _ in range(tamanho_matriz)] for _ in range(tamanho_matriz)]
 
 
 # Salve a matriz em um arquivo de texto
