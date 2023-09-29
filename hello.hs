@@ -86,6 +86,9 @@ usada para dobrar (ou reduzir) uma lista da direita para a esquerda
 (ou seja, começando do final da lista) 
 -}
 
+-- foldr (*) 1 [1,3,6] 
+-- foldr (+) 0 [1,3,6] 
+
 foldr' :: (a -> b -> b) -> b -> [a] -> b
 foldr' f z [] = z
 foldr' f z (h:t) = f h (foldr' f z t)
