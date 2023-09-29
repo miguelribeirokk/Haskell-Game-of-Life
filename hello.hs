@@ -1,5 +1,4 @@
-{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
-{-# HLINT ignore "Use foldr" #-}
+
 import Data.Bits (FiniteBits(finiteBitSize))
 --Comentario é com dois hífens seguidos
 
@@ -98,5 +97,32 @@ foldr (+) 0 [1,2,3] = (+) 1 (foldr (+) 0 [2,3])
 {-
 foldr' (+) 0 [1,2,3] = (+) 1 (foldr' (+) 0 [2,3])
                      = (+) 1 ((+) 2 (foldr' (+) 0 [3]))
-                     = (+) 1 ((+)) 2 ((+) 3 
--}
+                     = (+) 1 ((+)) 2 ((+) 3 (foldr' (+) 0 [])))
+                     = (+) 1 ((+) 2 ((+) 3 0))
+                     = (+) 1 5
+                     = 6
+-}                 
+
+-- Filtrar elementos da lista
+filter' :: (a -> Bool) -> [a] -> [a]
+filter' f [] = []
+filter' f (h:t) = if f h 
+    then h : filter' f t
+    else filter' f t
+
+-- Map
+map' :: (a -> b) -> [a] -> [b]
+map' f [] = []
+map' f (h:t) = f h : map' f t
+
+-- import Data.List (partition)
+
+-- QuickSort
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (pivot:t) = quicksort lt ++ [pivot] ++ quicksort gt
+
+    where lt = filter (<pivot) t
+          gt = filter (>= pivot) t
+    
+    -- where (lt,gt) = partition (<pivot) t
