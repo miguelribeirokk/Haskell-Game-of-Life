@@ -1,3 +1,5 @@
+{-# OPTIONS_GHC -Wno-unrecognised-pragmas #-}
+{-# HLINT ignore "Use foldr" #-}
 import Data.Bits (FiniteBits(finiteBitSize))
 --Comentario é com dois hífens seguidos
 
@@ -48,6 +50,32 @@ fib2 n = fib' 0 1 2
                 then n2 + n1 
                 else fib' n1 (n2+n1) (i+1)
 
--- Lista Infinita (não está pronto)
+-- Lista Infinita
 fibSeq :: [Integer]
 fibSeq = 0 : 1 : zipWith (+) fibSeq (tail fibSeq)
+
+-- Lista 
+-- Percorreer a lista
+-- f :: [a] -> [a] --Qualquer tipo
+-- f (h:t) = h : f t -- Head -> Tail
+
+f :: [a] -> Int
+f [] = 0
+f (h:t) = 1 + f t
+
+{- Teste
+f[1,2,3] = 1 + f[2,3]
+         = 1 + 1 f [3]
+         = 1 + 1 + 1 + f[]
+         = 1 + 1 + 1
+-}
+
+-- Tamanho da lista
+len :: [a] -> Int
+len []  = 0
+len (h:t) = 1 + len t
+
+-- Somar a lista
+sum' :: [Int] -> Int
+sum' [] = 0
+sum' (h:t) = h + sum' t
