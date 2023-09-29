@@ -15,6 +15,8 @@ ataulizar :: MatrixBool -> Matrix Bool
 atualizar m = M.mapPos () m
 
 atualizarCelula :: MatrixBool -> (Int, Int) -> Bool -> Bool
+atualizarCelula m (i,j) v =(v && (vivos ==2 || vivos ==3)) || vivos == 3
+
 atualizarCelula m(i,j) v=v
         where
                 deslocamentos =[(-1,-1), (-1,0), (-1,1),
