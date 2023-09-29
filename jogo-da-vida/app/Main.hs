@@ -34,7 +34,7 @@ mostrarMatriz m = foldr (\a b -> a ++ "\n" ++ b) "" strings
 -}
  
 cellSize :: Int
-cellSize = 1
+cellSize = 10
  
 toPicture :: Matrix Bool -> Picture
 toPicture grid =
@@ -50,9 +50,9 @@ toPicture grid =
         cells = M.mapPos toPicture' grid
  
 toPicture' :: (Int, Int) -> Bool -> Picture
-toPicture' (i,j) v =
+toPicture' (i, j) v =
     Translate x y $
-        Color (makeColor 1 1 1 (if v then 1 else 0)) $
+        Color (if v then black else white) $ -- Use green for living cells and red for dead cells
             rectangleSolid (fromIntegral cellSize) (fromIntegral cellSize)
     where
         x = (fromIntegral j - 0.5) * fromIntegral cellSize
@@ -60,7 +60,7 @@ toPicture' (i,j) v =
 
 main :: IO ()
 main = do
-    let fp = "life.txt"
+    let fp = "matriz2.txt"
     m <- lerInicial fp
     run m
     where 
