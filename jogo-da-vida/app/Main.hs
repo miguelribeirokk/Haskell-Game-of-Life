@@ -20,7 +20,7 @@ atualizarCelula m (i, j) v = (v && (vivos == 2 || vivos == 3)) || vivos == 3
     where
         deslocamentos = [(-1, -1), (-1, 0), (-1, 1),
                          (0, -1),           (0, 1),
-                         (1, 1),   (1, 0),  (1, 1)]
+                         (1, -1),   (1, 0),  (1, 1)]
         vizinhos = map (\(di,dj) -> M.safeGet (i+di) (j+dj) m) deslocamentos
         vizinhos' = map (fromMaybe False) vizinhos
         vivos = length (filter (\x -> x) vizinhos')
