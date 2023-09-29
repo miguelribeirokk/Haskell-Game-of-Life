@@ -1,5 +1,5 @@
+import Data.List (partition)
 
-import Data.Bits (FiniteBits(finiteBitSize))
 --Comentario é com dois hífens seguidos
 
 hello :: IO ()
@@ -103,21 +103,21 @@ foldr' (+) 0 [1,2,3] = (+) 1 (foldr' (+) 0 [2,3])
                      = 6
 -}                 
 
--- Filtrar elementos da lista
+-- Filtrar filter' (\x -> x `mod` 2 == 1) [0 .. 25]
 filter' :: (a -> Bool) -> [a] -> [a]
 filter' f [] = []
 filter' f (h:t) = if f h 
     then h : filter' f t
     else filter' f t
 
--- Map
+-- Map map' (1/) [1..10]
 map' :: (a -> b) -> [a] -> [b]
 map' f [] = []
 map' f (h:t) = f h : map' f t
 
--- import Data.List (partition)
 
--- QuickSort
+
+-- QuickSort quicksort [5,7,9,1,2]
 quicksort :: (Ord a) => [a] -> [a]
 quicksort [] = []
 quicksort (pivot:t) = quicksort lt ++ [pivot] ++ quicksort gt
